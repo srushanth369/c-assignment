@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    // Asking user for the number of elements
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int arr[n]; // Declaring the array of size n
+
+    // Reading elements into the array
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Array to hold unique elements
+    int unique[n];
+    int uniqueCount = 0;
+
+    // Finding unique elements
+    for (int i = 0; i < n; i++) {
+        int j;
+        for (j = 0; j < uniqueCount; j++) {
+            if (arr[i] == unique[j]) {
+                break; // Element already found in unique
+            }
+        }
+        // If the element is not found in unique, add it
+        if (j == uniqueCount) {
+            unique[uniqueCount] = arr[i];
+            uniqueCount++;
+        }
+    }
+
+    // Displaying unique elements
+    printf("Array after removing duplicates:\n");
+    for (int i = 0; i < uniqueCount; i++) {
+        printf("%d ", unique[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
