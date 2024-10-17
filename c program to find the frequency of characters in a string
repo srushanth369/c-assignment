@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define MAX_CHAR 256 // Total number of ASCII characters
+
+void calculateFrequency(const char *str) {
+    int frequency[MAX_CHAR] = {0}; // Initialize frequency array
+
+    // Count frequency of each character
+    for (int i = 0; str[i] != '\0'; i++) {
+        frequency[(unsigned char)str[i]]++; // Increment the count for the character
+    }
+
+    // Print the frequency of characters
+    printf("Character Frequency:\n");
+    for (int i = 0; i < MAX_CHAR; i++) {
+        if (frequency[i] > 0) {
+            printf("'%c': %d\n", i, frequency[i]);
+        }
+    }
+}
+
+int main() {
+    char str[100];
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin); // Read input string
+
+    // Remove newline character added by fgets
+    if (str[stringLength(str) - 1] == '\n') {
+        str[stringLength(str) - 1] = '\0';
+    }
+
+    calculateFrequency(str); // Calculate and display character frequencies
+
+    return 0;
+}
+
+// Function to get the length of a string
+int stringLength(const char *str) {
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
