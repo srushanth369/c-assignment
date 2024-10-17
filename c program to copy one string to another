@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void stringCopy(char *dest, const char *src) {
+    while (*src != '\0') { // Copy each character from src to dest
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0'; // Add null terminator at the end
+}
+
+int main() {
+    char src[100], dest[100];
+
+    printf("Enter a string to copy: ");
+    fgets(src, sizeof(src), stdin); // Read input string
+
+    // Remove newline character added by fgets
+    if (src[stringLength(src) - 1] == '\n') {
+        src[stringLength(src) - 1] = '\0';
+    }
+
+    stringCopy(dest, src); // Copy src to dest
+
+    printf("Copied string: %s\n", dest);
+
+    return 0;
+}
+
+// Function to get the length of a string
+int stringLength(const char *str) {
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
