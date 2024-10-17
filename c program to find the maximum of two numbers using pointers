@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+// Function to find the maximum of two integers using pointers
+void findMax(int *a, int *b, int *max) {
+    if (*a > *b) {
+        *max = *a; // Assign the larger value to max
+    } else {
+        *max = *b; // Assign the larger value to max
+    }
+}
+
+int main() {
+    int x, y, max;
+
+    // Input two numbers from the user
+    printf("Enter two integers: ");
+    scanf("%d %d", &x, &y);
+
+    // Call the function to find the maximum
+    findMax(&x, &y, &max); // Pass the addresses of x, y, and max
+
+    // Print the result
+    printf("The maximum of %d and %d is %d\n", x, y, max);
+
+    return 0;
+}
