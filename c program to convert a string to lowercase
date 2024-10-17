@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <ctype.h>
+
+void convertToLowercase(char *str) {
+    while (*str) {
+        *str = tolower((unsigned char)*str);
+        str++;
+    }
+}
+
+int main() {
+    char str[100];
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    convertToLowercase(str);
+
+    printf("Lowercase string: %s\n", str);
+
+    return 0;
+}
