@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+// Function to swap two integers using pointers
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Function to sort an array using pointers (Bubble Sort)
+void sortArray(int *arr, int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (*(arr + j) > *(arr + j + 1)) {
+                swap(arr + j, arr + j + 1); // Swap using pointers
+            }
+        }
+    }
+}
+
+// Function to print the array
+void printArray(int *arr, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", *(arr + i)); // Accessing elements using pointer arithmetic
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array:\n");
+    printArray(arr, size);
+
+    // Sort the array
+    sortArray(arr, size);
+
+    printf("Sorted array:\n");
+    printArray(arr, size);
+
+    return 0;
+}
