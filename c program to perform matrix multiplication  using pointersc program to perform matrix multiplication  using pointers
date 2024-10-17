@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+#define MAX 10 // Define maximum size for matrices
+
+// Function to input a matrix
+void inputMatrix(int (*matrix)[MAX], int rows, int cols) {
+    printf("Enter elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+}
+
+// Function to print a matrix
+void printMatrix(int (*matrix)[MAX], int rows, int cols) {
+    printf("The matrix is:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Function to multiply two matrices
+void multiplyMatrices(int (*first)[MAX], int (*second)[MAX], int (*result)[MAX], int r1, int c1, int c2) {
+    // Initialize result matrix to 0
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            result[i][j] = 0;
+        }
+    }
+
+    // Perform multiplication
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            for (int k = 0; k < c1; k++) {
+                result[i][j] += first[i][k] * second[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int first[MAX][MAX], second[MAX][MAX], result[MAX][MAX];
+    int r1, c1, r2, c2;
+
+    // Input the dimensions of the first matrix
+    printf("Enter rows and columns for the first matrix: ");
+    scanf("%d %d", &r1, &c1);
+    
+    // Input the dimensions of the second matrix
+    printf("Enter rows and columns for the second matrix: ");
+    scanf("%d %d", &r2, &c2);
+
+    // Check if multiplication is possible
+    if (c1 != r2) {
+        printf("Error! Number of columns in the first matrix must equal number of rows in the second matrix.\n");
+        return 1;
+    }
+
+    printf("Input for the first matrix:\n");
+    inputMatrix(first, r1, c1);
+
+    printf("Input for the second matrix:\n");
+    inputMatrix(second, r2, c2);
+
+    // Multiply the two matrices
+    multiplyMatrices(first, second, result, r1, c1, c2);
+
+    // Print the result
+    printf("Result of matrix multiplication:\n");
+    printMatrix(result, r1, c2);
+
+    return 0;
+}
