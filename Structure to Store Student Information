@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+struct Student {
+    char name[50];
+    int roll_no;
+    float marks;
+};
+
+int main() {
+    struct Student student1 = {"Alice", 101, 89.5};
+
+    printf("Name: %s\n", student1.name);
+    printf("Roll No: %d\n", student1.roll_no);
+    printf("Marks: %.2f\n", student1.marks);
+
+    return 0;
+}
