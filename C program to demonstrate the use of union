@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+union Data {
+    int intVal;
+    float floatVal;
+    char charVal;
+};
+
+int main() {
+    union Data data;
+    data.intVal = 10;
+    printf("Int: %d\n", data.intVal);
+
+    data.floatVal = 220.5;
+    printf("Float: %.2f\n", data.floatVal); // Note: Overwrites intVal
+
+    data.charVal = 'A';
+    printf("Char: %c\n", data.charVal); // Note: Overwrites floatVal
+
+    return 0;
+}
