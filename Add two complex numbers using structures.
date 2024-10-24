@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+struct Complex {
+    float real;
+    float imag;
+};
+
+struct Complex add(struct Complex c1, struct Complex c2) {
+    struct Complex result;
+    result.real = c1.real + c2.real;
+    result.imag = c1.imag + c2.imag;
+    return result;
+}
+
+int main() {
+    struct Complex c1 = {3.0, 2.0};
+    struct Complex c2 = {1.5, 4.5};
+    struct Complex sum = add(c1, c2);
+
+    printf("Sum: %.1f + %.1fi\n", sum.real, sum.imag);
+    return 0;
+}
