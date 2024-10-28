@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure to hold student information
+struct Student {
+    int id;
+    char name[50];
+    float grade;
+};
+
+// Function to read student information
+void readStudentInfo(struct Student *student) {
+    printf("Enter Student ID: ");
+    scanf("%d", &student->id);
+    
+    printf("Enter Student Name: ");
+    scanf(" %[^\n]", student->name); // Read string with spaces
+    
+    printf("Enter Student Grade: ");
+    scanf("%f", &student->grade);
+}
+
+// Function to display student information
+void displayStudentInfo(const struct Student *student) {
+    printf("\nStudent Information:\n");
+    printf("ID: %d\n", student->id);
+    printf("Name: %s\n", student->name);
+    printf("Grade: %.2f\n", student->grade);
+}
+
+int main() {
+    // Create a Student structure and a pointer to it
+    struct Student student;
+    struct Student *ptr = &student;
+
+    // Read student information
+    readStudentInfo(ptr);
+
+    // Display student information
+    displayStudentInfo(ptr);
+
+    return 0;
+}
