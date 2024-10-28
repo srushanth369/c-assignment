@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+// Define a union with different data types
+union Data {
+    int i;
+    float f;
+    char c;
+};
+
+int main() {
+    // Create a union variable
+    union Data data;
+
+    // Get the size of the union
+    printf("Size of union Data: %zu bytes\n", sizeof(data));
+
+    // Optionally, show the size of each member
+    printf("Size of int: %zu bytes\n", sizeof(data.i));
+    printf("Size of float: %zu bytes\n", sizeof(data.f));
+    printf("Size of char: %zu bytes\n", sizeof(data.c));
+
+    return 0;
+}
