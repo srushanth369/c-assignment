@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+// Define a structure to hold address information
+struct Address {
+    char street[100];
+    char city[50];
+    char state[50];
+    int zip;
+};
+
+// Define a structure to hold student information
+struct Student {
+    int id;
+    char name[50];
+    struct Address address; // Nested structure
+};
+
+// Function to read student information
+void readStudentInfo(struct Student *student) {
+    printf("Enter Student ID: ");
+    scanf("%d", &student->id);
+    
+    printf("Enter Student Name: ");
+    scanf(" %[^\n]", student->name); // Read string with spaces
+    
+    printf("Enter Street: ");
+    scanf(" %[^\n]", student->address.street);
+    
+    printf("Enter City: ");
+    scanf(" %[^\n]", student->address.city);
+    
+    printf("Enter State: ");
+    scanf(" %[^\n]", student->address.state);
+    
+    printf("Enter ZIP Code: ");
+    scanf("%d", &student->address.zip);
+}
+
+// Function to display student information
+void displayStudentInfo(const struct Student *student) {
+    printf("\nStudent Information:\n");
+    printf("ID: %d\n", student->id);
+    printf("Name: %s\n", student->name);
+    printf("Address:\n");
+    printf("  Street: %s\n", student->address.street);
+    printf("  City: %s\n", student->address.city);
+    printf("  State: %s\n", student->address.state);
+    printf("  ZIP Code: %d\n", student->address.zip);
+}
+
+int main() {
+    // Create a Student structure and a pointer to it
+    struct Student student;
+    
+    // Read student information
+    readStudentInfo(&student);
+
+    // Display student information
+    displayStudentInfo(&student);
+
+    return 0;
+}
