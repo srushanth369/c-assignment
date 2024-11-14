@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+// Function to check if a number is prime
+bool isPrime(int num) {
+    if (num <= 1) {
+        return false;  // Numbers less than or equal to 1 are not prime
+    }
+
+    // Check divisibility from 2 to sqrt(num)
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return false;  // num is divisible by i, so it's not prime
+        }
+    }
+
+    return true;  // num is prime
+}
+
+// Function to generate all prime numbers between two given numbers
+void generatePrimesInRange(int start, int end) {
+    printf("Prime numbers between %d and %d: ", start, end);
+
+    // Loop through all numbers in the range [start, end]
+    for (int num = start; num <= end; num++) {
+        if (isPrime(num)) {
+            printf("%d ", num);  // Print the prime number
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int start, end;
+
+    // Take input for the range
+    printf("Enter the range (start and end): ");
+    scanf("%d %d", &start, &end);
+
+    // Generate and print all prime numbers in the given range
+    generatePrimesInRange(start, end);
+
+    return 0;
+}
