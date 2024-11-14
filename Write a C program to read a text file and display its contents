@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *file;          // File pointer
+    char ch;             // Variable to hold each character
+
+    // Open the file for reading
+    file = fopen("example.txt", "r");
+
+    // Check if file was opened successfully
+    if (file == NULL) {
+        printf("Could not open file for reading\n");
+        return 1;
+    }
+
+    // Read and display the contents of the file one character at a time
+    while ((ch = fgetc(file)) != EOF) {
+        putchar(ch);
+    }
+
+    // Close the file after reading
+    fclose(file);
+
+    return 0;
+}
