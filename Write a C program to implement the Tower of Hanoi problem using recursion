@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+// Function to solve the Tower of Hanoi problem
+void towerOfHanoi(int numDisks, char fromRod, char toRod, char auxRod) {
+    // Base case: If only one disk, move it from the fromRod to the toRod
+    if (numDisks == 1) {
+        printf("Move disk 1 from %c to %c\n", fromRod, toRod);
+        return;
+    }
+
+    // Recursive case:
+    // Move numDisks-1 disks from fromRod to auxRod using toRod as auxiliary
+    towerOfHanoi(numDisks - 1, fromRod, auxRod, toRod);
+
+    // Move the remaining disk from fromRod to toRod
+    printf("Move disk %d from %c to %c\n", numDisks, fromRod, toRod);
+
+    // Move the numDisks-1 disks from auxRod to toRod using fromRod as auxiliary
+    towerOfHanoi(numDisks - 1, auxRod, toRod, fromRod);
+}
+
+int main() {
+    int numDisks;
+
+    // Take input for the number of disks
+    printf("Enter the number of disks: ");
+    scanf("%d", &numDisks);
+
+    // Call the Tower of Hanoi function to solve the problem
+    printf("\nThe sequence of moves to solve the Tower of Hanoi for %d disks is:\n", numDisks);
+    towerOfHanoi(numDisks, 'A', 'C', 'B');  // A, B, and C are the rods
+
+    return 0;
+}
