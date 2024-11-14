@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_WORD_LENGTH 100
+
+// Function to convert a string to lowercase
+void toLowerCase(char *str) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower((unsigned char)str[i]);
+    }
+}
+
+int main() {
+    FILE *file;
+    char filename[100];
+    char word[MAX_WORD_LENGTH];
+    char currentWord[MAX_WORD_LENGTH];
+    int count = 0;
+
+    // Prompt the user to enter the filename and the word to search
+    printf("Enter the filename: ");
+    scanf("%s", filename);
+    printf("Enter the word to find its frequency: ");
+    scanf("%s", word);
+
+    // Open the file in read mode
+    file = fopen(filename, "r");
+
+    // Check if the file can be opened
+    if (file == NULL) {
+        printf("Could not open file %s\n", filename);
+        return 1;
+    }
+
+    // Convert the search word to lowercase
+    toLowerCase(word);
+
+    // Read each word in the file and count occurrences
+    while (fscanf(file, "%s", currentWord) == 1) {
+        // Convert the current word to lowercase for case-insensitive comparison
+        toLowerCase(currentWord);
+
+        if (strcmp(currentWord, word) == 0) {
+            count++;
+        }
+    }
+
+    // Close the file
+    fclose(file);
+
+    // Display the result
+    printf("The word '%s' appears %d times in the file %s.\n", word, count, filename);
+
+    return 0;
+}
