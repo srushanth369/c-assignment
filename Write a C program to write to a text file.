@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;    // File pointer
+    char text[] = "Hello, this is a test text written to the file.\n";
+
+    // Open the file for writing ("w" mode)
+    file = fopen("output.txt", "w");
+
+    // Check if file was opened successfully
+    if (file == NULL) {
+        printf("Could not open file for writing\n");
+        return 1;
+    }
+
+    // Write text to the file
+    fprintf(file, "%s", text);
+
+    // Alternatively, you can also use fputs:
+    // fputs(text, file);
+
+    printf("Text written to the file successfully.\n");
+
+    // Close the file after writing
+    fclose(file);
+
+    return 0;
+}
