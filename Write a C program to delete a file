@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    char filename[100];
+    int status;
+
+    // Prompt the user to enter the filename
+    printf("Enter the filename to delete: ");
+    scanf("%s", filename);
+
+    // Use the remove function to delete the file
+    status = remove(filename);
+
+    // Check if the file was deleted successfully
+    if (status == 0) {
+        printf("File %s deleted successfully.\n", filename);
+    } else {
+        printf("Unable to delete the file %s. Please check if the file exists and you have the necessary permissions.\n", filename);
+    }
+
+    return 0;
+}
