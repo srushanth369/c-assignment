@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+void decimalToBinary(int n) {
+    // Variable to store the binary representation
+    int binary[32];  // Assuming we are dealing with a 32-bit integer
+    int index = 0;
+
+    // Edge case for zero
+    if (n == 0) {
+        printf("0");
+        return;
+    }
+
+    // Convert the decimal number to binary
+    while (n > 0) {
+        binary[index] = n % 2;  // Store the remainder (0 or 1)
+        n = n / 2;  // Divide the number by 2
+        index++;
+    }
+
+    // Print the binary number in reverse order
+    printf("Binary representation: ");
+    for (int i = index - 1; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    // Take user input for the decimal number
+    printf("Enter a decimal number: ");
+    scanf("%d", &n);
+
+    // Convert and print the binary representation
+    decimalToBinary(n);
+
+    return 0;
+}
